@@ -9,7 +9,7 @@ const Hero = () => {
                 <h1 className='text-7xl font-bold tracking-wider'>
                     Hello, Everyone
                     <p className='mt-4 text-3xl text-slate-700 tracking-wide'>
-                        My name is David and I Front-End Developer
+                        My name is David, and I am a Front-End Developer.
                     </p>
                     <p className='mt-2 text-lg text-slate-700 capitalize tracking-wide'>
                         Turning ideas into reality
