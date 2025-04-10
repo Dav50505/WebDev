@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 import { FaHtml5, FaJs, FaReact } from 'react-icons/fa';
+import { SiTypescript } from 'react-icons/si';
+import { RiNextjsFill } from 'react-icons/ri';
 
 export const links = [
   { id: nanoid(), href: '#home', text: 'home' },
@@ -26,6 +28,18 @@ export const skills = [
     title: 'React',
     icon: <FaReact className='h-16 w-16 text-emerald-500' />,
     text: 'Advanced proficiency in React, developing efficient and interactive front-end applications with a strong emphasis on component-based architecture.',
+  },
+  {
+    id: nanoid(),
+    title: 'Typescript',
+    icon: <SiTypescript className='h-16 w-16 text-emerald-500' />,
+    text: 'Strong expertise in TypeScript, leveraging static typing and advanced features to build robust, maintainable applications with enhanced code quality and developer experience.',
+  },
+  {
+    id: nanoid(),
+    title: 'Next.js',
+    icon: <RiNextjsFill className='h-16 w-16 text-emerald-500' />,
+    text: 'Proficient in Next.js, building performant full-stack applications with server-side rendering, static site generation, and modern React features for optimal user experience and SEO.',
   },
 ];
 
