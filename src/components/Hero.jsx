@@ -18,7 +18,7 @@ const Hero = () => {
                         <a href="https://github.com/Dav50505">
                             <FaGithubSquare className='h-8 w-8 bg-sky-400 hover:text-black duration-300 text-black'/>
                         </a>
-                        <a href="#">
+                        <a href="https://www.linkedin.com/in/david-ginzburg-a453ba295/">
                             <FaLinkedin className='h-8 w-8 bg-sky-400 hover:text-black duration-300 text-black'/>
                         </a>
                         <a href="https://www.instagram.com/dginzburg_2005/?hl=en">

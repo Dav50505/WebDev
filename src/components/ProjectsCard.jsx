@@ -1,6 +1,6 @@
-import { FaGithubSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa';
+import { FaGithubSquare } from 'react-icons/fa';
 import { TbWorldWww } from 'react-icons/tb';
-
+import PropTypes from 'prop-types';
 
 const ProjectsCard = ({url, img, github, title, text}) => {
   return (
@@ -21,4 +21,13 @@ const ProjectsCard = ({url, img, github, title, text}) => {
     </article>
   )
 }
+
+ProjectsCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+};
+
 export default ProjectsCard
