@@ -146,14 +146,43 @@ function transformProject(entry: any, isFirst: boolean = false): Project {
     console.log('Featured field value:', fields.featured, 'Resolved to:', featured)
   }
 
+  // Get liveUrl - handle different field names (similar to title handling)
+  // Prioritize 'url' since that's the field name used in Contentful
+  let liveUrl = 
+    fields.url ||           // Contentful field name (priority)
+    fields.liveUrl || 
+    fields.projectUrl ||
+    fields.live_url ||
+    fields['live-url'] ||
+    fields['project-url'] ||
+    fields.LiveUrl ||
+    fields.URL ||
+    '#'
+  
+  // Get githubUrl - handle different field names
+  let githubUrl = 
+    fields.githubUrl || 
+    fields.github || 
+    fields.github_url ||
+    fields['github-url'] ||
+    fields.GithubUrl ||
+    fields.GitHub ||
+    '#'
+
+  // Debug logging for URLs
+  if (process.env.NODE_ENV === 'development' && isFirst && !hasLoggedFields) {
+    console.log('Live URL field value:', liveUrl)
+    console.log('GitHub URL field value:', githubUrl)
+  }
+
   return {
     id: entry.sys?.id || entry.id || '',
     title: title,
     description: fields.description || '',
     longDescription: fields.longDescription || fields.description || '',
     image: imageUrl,
-    liveUrl: fields.liveUrl || '#',
-    githubUrl: fields.githubUrl || '#',
+    liveUrl: liveUrl,
+    githubUrl: githubUrl,
     techStack: techStack,
     featured: featured,
   }
