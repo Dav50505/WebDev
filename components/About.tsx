@@ -39,18 +39,26 @@ export default function About() {
           >
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                I&apos;m a 20-year-old front-end developer with a passion for building modern,
+                I&apos;m a 20-year-old full stack developer with a passion for building modern,
                 performant web applications. My journey in web development began in 2018, and since
                 then, I&apos;ve dedicated myself to mastering the latest technologies and best
-                practices.
+                practices across the entire development stack.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                I specialize in React, Next.js, and TypeScript, creating scalable applications with
-                exceptional user experiences. My expertise spans from crafting pixel-perfect UIs to
-                implementing complex state management and optimizing performance.
+                I specialize in React, Next.js, and TypeScript, creating scalable full-stack applications with
+                exceptional user experiences. My portfolio includes diverse projects such as content management systems, 
+                e-commerce platforms with payment integration, real-time collaborative task management applications, 
+                and responsive portfolio websites. My expertise spans from crafting pixel-perfect UIs to
+                implementing complex state management, backend APIs, database design, and optimizing performance across the stack.
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                Currently, I&apos;m employed at <a href="https://eseospace.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline font-medium">Eseospace</a>, where I contribute to innovative 
+                software solutions. I&apos;m also actively working on a project that requires strict HIPAA compliance, 
+                developing secure healthcare applications that handle sensitive patient data while maintaining the highest 
+                standards of privacy and security regulations.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Beyond front-end development, I also work with Python for backend solutions and
+                Beyond full-stack development, I also work with Python for backend solutions and
                 automation. I&apos;m committed to writing clean, maintainable code and staying
                 current with industry trends and emerging technologies.
               </p>

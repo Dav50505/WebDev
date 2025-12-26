@@ -39,17 +39,17 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.6 }}
             >
               <p className="text-sm md:text-base font-medium text-blue-600 dark:text-blue-400 mb-4">
-                Hello, I&apos;m
+                Welcome
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
                 David Ginzburg
               </h1>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
-                Front-End Developer
+                Full Stack Developer & Software Engineer
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
-                Specializing in React, Next.js, and TypeScript to build modern, performant web
-                applications with exceptional user experiences.
+                Crafting scalable, high-performance web applications using React, Next.js, TypeScript, and Python. 
+                I transform complex requirements into elegant, user-centric solutions that drive business value.
               </p>
             </motion.div>
 
