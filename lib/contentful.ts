@@ -3,25 +3,29 @@ import { Project } from './data'
 
 // Contentful entry type for projects
 // Using a more flexible type to handle any field names from Contentful
-interface ContentfulProject {
-  fields: {
-    [key: string]: any // Allow any field names since Contentful field IDs can vary
-    name?: string
-    title?: string
-    description?: string
-    longDescription?: string
-    image?: string | {
-      fields?: {
-        file?: {
-          url?: string
-        }
+interface ContentfulProjectFields {
+  [key: string]: any // Allow any field names since Contentful field IDs can vary
+  name?: string
+  title?: string
+  description?: string
+  longDescription?: string
+  image?: string | {
+    fields?: {
+      file?: {
+        url?: string
       }
     }
-    liveUrl?: string
-    githubUrl?: string
-    techStack?: string[]
-    featured?: boolean
   }
+  liveUrl?: string
+  githubUrl?: string
+  techStack?: string[]
+  featured?: boolean
+}
+
+// Contentful entry type that satisfies EntrySkeletonType
+interface ContentfulProject {
+  contentTypeId: 'projects'
+  fields: ContentfulProjectFields
   sys: {
     id: string
   }
@@ -43,8 +47,8 @@ function getClient() {
 let hasLoggedFields = false
 
 // Transform Contentful entry to Project
-function transformProject(entry: ContentfulProject, isFirst: boolean = false): Project {
-  const fields = entry.fields
+function transformProject(entry: any, isFirst: boolean = false): Project {
+  const fields = entry.fields || {}
   
   // Debug: Log available fields only once for the first entry
   if (process.env.NODE_ENV === 'development' && isFirst && !hasLoggedFields) {
@@ -143,7 +147,7 @@ function transformProject(entry: ContentfulProject, isFirst: boolean = false): P
   }
 
   return {
-    id: entry.sys.id,
+    id: entry.sys?.id || entry.id || '',
     title: title,
     description: fields.description || '',
     longDescription: fields.longDescription || fields.description || '',
@@ -164,12 +168,12 @@ export async function getAllProjects(): Promise<Project[]> {
   }
 
   try {
-    const entries: EntryCollection<ContentfulProject> = await client.getEntries({
+    const entries = await client.getEntries({
       content_type: 'projects',
       limit: 1000, // Fetch all projects (adjust if you have more than 1000)
-      order: '-sys.updatedAt', // Order by most recently updated
+      order: ['-sys.updatedAt'] as any, // Order by most recently updated
       // Include all fields - Contentful returns all fields by default, but being explicit
-    })
+    }) as EntryCollection<ContentfulProject>
     
     // Debug: Log first entry to see structure
     if (process.env.NODE_ENV === 'development' && entries.items.length > 0) {
@@ -184,7 +188,7 @@ export async function getAllProjects(): Promise<Project[]> {
     // Reset the logging flag for this fetch
     hasLoggedFields = false
     
-    return entries.items.map((entry, index) => transformProject(entry, index === 0))
+    return entries.items.map((entry: any, index: number) => transformProject(entry, index === 0))
   } catch (error) {
     console.error('Error fetching projects from Contentful:', error)
     // Return empty array on error to prevent app crash
@@ -201,8 +205,8 @@ export async function getProjectById(id: string): Promise<Project | null> {
   }
 
   try {
-    const entry = await client.getEntry<ContentfulProject>(id)
-    return transformProject(entry as ContentfulProject)
+    const entry = await client.getEntry(id) as any
+    return transformProject(entry)
   } catch (error) {
     console.error(`Error fetching project ${id} from Contentful:`, error)
     return null
